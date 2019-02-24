@@ -16,4 +16,5 @@ provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 export const fb = {
   login: () => fire.auth().signInWithPopup(provider),
+  logout: () => fire.auth().signOut(),
 };
