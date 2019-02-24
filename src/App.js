@@ -40,7 +40,11 @@ class App extends Component {
     });
   };
 
-  logout() {}
+  logout = () => {
+    fb.logout().then(() => {
+      this.setState({ user: null });
+    });
+  };
 
   render() {
     const { user } = this.state;
