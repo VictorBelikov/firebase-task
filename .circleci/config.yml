@@ -98,11 +98,11 @@ workflows:
       - build:
           requires:
             - save_cache
-      # - deploy:
-      #     context: firebase-react
-      #     requires:
-      #       - build
-      #       - test
-      #     filters:
-      #           branches:
-      #             only: master
+       - deploy:
+           context: firebase-task
+           requires:
+             - build
+             - test
+           filters:
+                 branches:
+                   only: master
