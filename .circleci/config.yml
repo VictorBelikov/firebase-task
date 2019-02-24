@@ -85,7 +85,7 @@ jobs:
           command: echo $FIREBASE_TOKEN
       - run:
           name: Deploy to Firebase hosting
-          command: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --only hosting --token $FIREBASE_TOKEN
 
 workflows:
   version: 2
@@ -98,11 +98,11 @@ workflows:
       - build:
           requires:
             - save_cache
-      # - deploy:
-      #     context: firebase-react
-      #     requires:
-      #       - build
-      #       - test
-      #     filters:
-      #           branches:
-      #             only: master
+      - deploy:
+          context: firebase-task
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master
